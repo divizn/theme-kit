@@ -1,0 +1,24 @@
+{
+  "name": "@divizn/theme-kit",
+  "version": "0.1.0",
+  "description": "Shared design tokens and Tailwind preset for divizn's static sites",
+  "type": "module",
+  "main": "./theme.css",
+  "exports": {
+    ".": "./theme.css"
+  },
+  "files": [
+    "theme.css"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "design-tokens",
+    "tailwind",
+    "css",
+    "theme"
+  ],
+  "author": "Hassan Javed",
+  "license": "MIT"
+}
