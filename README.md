@@ -1,4 +1,4 @@
-# @divizn/theme-kit
+# @ph0n/theme-kit
 
 Shared design tokens and Tailwind preset for [divizn's](https://github.com/divizn) static sites.
 
@@ -13,7 +13,7 @@ Shared design tokens and Tailwind preset for [divizn's](https://github.com/diviz
 ## Installation
 
 ```bash
-pnpm add @divizn/theme-kit
+pnpm add @ph0n/theme-kit
 ```
 
 ## Usage
@@ -22,7 +22,7 @@ Import in your main stylesheet (before any Tailwind directives):
 
 ```css
 @import "tailwindcss";
-@import "@divizn/theme-kit";
+@import "@ph0n/theme-kit";
 @import "@fontsource-variable/inter";
 
 /* Your site's own extra tokens go here */
@@ -41,7 +41,7 @@ The package provides the CSS; you provide the binary.
 If your site needs extra tokens (e.g., game-specific colors), add them *after* the import:
 
 ```css
-@import "@divizn/theme-kit";
+@import "@ph0n/theme-kit";
 
 :root {
   --hit: #f87171;
@@ -63,7 +63,7 @@ Tailwind v4 merges `@theme` blocks, so this just adds to the preset without conf
 Edit `theme.css` in this package, bump the version (`npm version patch`), publish, then update consuming sites:
 
 ```bash
-pnpm update @divizn/theme-kit
+pnpm update @ph0n/theme-kit
 ```
 
 This centralizes theme changes — no more hand-copying CSS across repos.

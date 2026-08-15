@@ -1,5 +1,5 @@
 {
-  "name": "@divizn/theme-kit",
+  "name": "@ph0n/theme-kit",
   "version": "0.1.0",
   "description": "Shared design tokens and Tailwind preset for divizn's static sites",
   "type": "module",
