@@ -22,13 +22,16 @@
   --primary: #f4f4f5;
   --primary-foreground: #18181b;
 
-  /* space-separated so JS can build rgba(var(--particle-rgb), alpha) */
-  --particle-rgb: 255 255 255;
+  /* the light value lifted to oklch lightness 0.7, since #0400d9 is 2:1 on black */
+  --accent: #438aff;
 
-  --glow-a: rgba(244, 244, 245, 0.35);
-  --glow-b: rgba(244, 244, 245, 0.15);
-  --glow-a-strong: rgba(244, 244, 245, 0.6);
-  --glow-b-strong: rgba(244, 244, 245, 0.3);
+  /* space-separated so JS can build rgba(var(--particle-rgb), alpha) */
+  --particle-rgb: 67 138 255;
+
+  --glow-a: rgba(67, 138, 255, 0.35);
+  --glow-b: rgba(67, 138, 255, 0.15);
+  --glow-a-strong: rgba(67, 138, 255, 0.6);
+  --glow-b-strong: rgba(67, 138, 255, 0.3);
 }
 
 [data-theme="light"] {
@@ -42,12 +45,14 @@
   --primary: #18181b;
   --primary-foreground: #fafafa;
 
-  --particle-rgb: 24 24 27;
+  --accent: #0400d9;
 
-  --glow-a: rgba(24, 24, 27, 0.25);
-  --glow-b: rgba(24, 24, 27, 0.1);
-  --glow-a-strong: rgba(24, 24, 27, 0.45);
-  --glow-b-strong: rgba(24, 24, 27, 0.2);
+  --particle-rgb: 4 0 217;
+
+  --glow-a: rgba(4, 0, 217, 0.25);
+  --glow-b: rgba(4, 0, 217, 0.1);
+  --glow-a-strong: rgba(4, 0, 217, 0.45);
+  --glow-b-strong: rgba(4, 0, 217, 0.2);
 }
 
 @theme inline {
@@ -63,7 +68,8 @@
   --color-muted: var(--muted);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
-  --color-ring: #71717a;
+  --color-accent: var(--accent);
+  --color-ring: var(--accent);
 
   --animate-fade-in: fade-in 1s ease-out both;
   --animate-glow: glow 3s ease-in-out infinite;
