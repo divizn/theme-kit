@@ -1,6 +1,6 @@
 {
   "name": "@ph0n/theme-kit",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Shared design tokens and Tailwind preset for divizn's static sites",
   "type": "module",
   "main": "./theme.css",

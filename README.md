@@ -5,6 +5,7 @@ Shared design tokens and Tailwind preset for [divizn's](https://github.com/diviz
 ## What's included
 
 - CSS custom properties for a black/zinc dark-by-default color palette
+- A blue accent (`--accent`) with a per-theme value, since one hex cannot clear contrast on both grounds
 - Light theme override (`[data-theme="light"]`)
 - Inter Variable + CalSans font setup
 - Tailwind v4 theme configuration
