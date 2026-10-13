@@ -12,6 +12,7 @@ Shared themes, styles and Solid UI components for [divizn's](https://github.com/
   - graph paper: `.graph-paper`, `.graph-rows`, `.graph-cols`, `.graph-grid`, `.graph-torch`, `.graph-card` (+ `-arrow`)
   - timeline: `.timeline-entry`, `.timeline-marker` (scroll-driven)
   - `.section-head` + `.section-numeral`, `.checkpoint`, `.track` (+ `-stop`, `-node`, `-text`, `-name`, `-key`, `-meta`)
+  - progress: `.status-pill` (`data-status`), `.status-menu` (popover), `.progress-bar` (`--p`, optional `--mark` tick), `.week-chip` (`data-state`), `.overdue-banner`
 - `tailwind.css`: maps the tokens to Tailwind v4 utilities (`bg-background`, `text-accent`, `font-display`, ...) plus keyframe animations (fade-in, glow, title, text-glow, ink, underline, rise, grid draw-in) and a spring easing.
 - Solid UI components from `@ph0n/theme-kit/ui`: `BentoGrid` + `BentoGridItem`, `Badge`, `Button`, `Card` (+ `CardHeader`, `CardTitle`, `CardDescription`, `CardContent`), `Separator` and `cn()`.
 
