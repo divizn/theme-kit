@@ -3,6 +3,8 @@
  * Tailwind v4 @theme blocks merge, so multiple imports don't conflict.
  */
 
+@source "./dist";
+
 @font-face {
   font-family: "CalSans";
   src: url("/fonts/CalSans-SemiBold.ttf") format("truetype");
@@ -32,6 +34,10 @@
   --glow-b: rgba(67, 138, 255, 0.15);
   --glow-a-strong: rgba(67, 138, 255, 0.6);
   --glow-b-strong: rgba(67, 138, 255, 0.3);
+
+  --grid: rgba(67, 138, 255, 0.07);
+  --grid-major: rgba(67, 138, 255, 0.14);
+  --grid-lit: rgba(67, 138, 255, 0.4);
 }
 
 [data-theme="light"] {
@@ -53,6 +59,10 @@
   --glow-b: rgba(4, 0, 217, 0.1);
   --glow-a-strong: rgba(4, 0, 217, 0.45);
   --glow-b-strong: rgba(4, 0, 217, 0.2);
+
+  --grid: rgba(4, 0, 217, 0.05);
+  --grid-major: rgba(4, 0, 217, 0.1);
+  --grid-lit: rgba(4, 0, 217, 0.28);
 }
 
 @theme inline {
@@ -138,4 +148,205 @@ body {
   transition-property: background-color, border-color, color, fill, stroke;
   transition-timing-function: ease;
   transition-duration: 200ms;
+}
+
+@theme {
+  --ease-spring: cubic-bezier(0.3, 1.6, 0.5, 1);
+  --animate-ink: ink 1s 0.5s ease-out both;
+  --animate-underline: underline 0.8s 1.2s cubic-bezier(0.5, 0, 0.2, 1) forwards;
+  --animate-intro: rise 0.7s 1.5s ease-out both;
+  --animate-rise: rise 0.5s ease-out both;
+  --animate-draw-rows: draw-rows 1.4s cubic-bezier(0.6, 0, 0.2, 1) both;
+  --animate-draw-cols: draw-cols 1.4s 0.15s cubic-bezier(0.6, 0, 0.2, 1) both;
+
+  @keyframes ink {
+    from {
+      opacity: 0;
+      translate: 0 0.25em;
+      text-shadow: 0 0 0 transparent;
+    }
+    60% {
+      opacity: 1;
+      translate: 0;
+      text-shadow:
+        0 0 40px var(--glow-a),
+        0 0 90px var(--glow-a);
+    }
+  }
+
+  @keyframes underline {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      translate: 0 0.5rem;
+    }
+  }
+
+  @keyframes draw-rows {
+    from {
+      clip-path: inset(0 100% 0 0);
+    }
+    to {
+      clip-path: inset(0);
+    }
+  }
+
+  @keyframes draw-cols {
+    from {
+      clip-path: inset(0 0 100% 0);
+    }
+    to {
+      clip-path: inset(0);
+    }
+  }
+}
+
+.graph-paper {
+  mask-image: radial-gradient(
+    ellipse 70% 90% at 30% 0,
+    #000 30%,
+    transparent 75%
+  );
+}
+
+.graph-rows {
+  background-image:
+    linear-gradient(var(--grid-major) 1px, transparent 1px),
+    linear-gradient(var(--grid) 1px, transparent 1px);
+  background-size:
+    120px 120px,
+    24px 24px;
+}
+
+.graph-cols {
+  background-image:
+    linear-gradient(90deg, var(--grid-major) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size:
+    120px 120px,
+    24px 24px;
+}
+
+.graph-torch {
+  background-image:
+    linear-gradient(var(--grid-lit) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-lit) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: radial-gradient(
+    circle 160px at var(--mx, -999px) var(--my, -999px),
+    #000,
+    transparent
+  );
+  transition: opacity 0.3s;
+}
+
+.graph-card {
+  transition:
+    border-color 0.15s,
+    box-shadow 0.25s var(--ease-spring),
+    translate 0.25s var(--ease-spring);
+}
+
+.graph-card > * {
+  position: relative;
+}
+
+.graph-card::before,
+.graph-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.graph-card::before {
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.graph-card::after {
+  background-image:
+    linear-gradient(var(--grid-lit) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-lit) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: radial-gradient(
+    circle 140px at var(--tx, 50%) var(--ty, 50%),
+    #000,
+    transparent
+  );
+}
+
+@media (hover: hover) {
+  .graph-card:hover::before,
+  .graph-card:hover::after {
+    opacity: 1;
+  }
+}
+
+.graph-card:focus-visible::before,
+.graph-card:focus-visible::after {
+  opacity: 1;
+}
+
+.graph-card-arrow {
+  transition:
+    color 0.15s,
+    translate 0.25s var(--ease-spring);
+}
+
+@supports (animation-timeline: view()) {
+  .timeline-entry::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(-1.5rem - 1px);
+    width: 1px;
+    background: var(--accent);
+    transform-origin: top;
+    animation-name: timeline-fill;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+    animation-timeline: view();
+    animation-range: entry 20% cover 55%;
+  }
+
+  .timeline-marker {
+    z-index: 1;
+    animation-name: timeline-marker;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+    animation-timeline: view();
+    animation-range: entry 40% entry 100%;
+  }
+}
+
+@keyframes timeline-fill {
+  from {
+    scale: 1 0;
+  }
+}
+
+@keyframes timeline-marker {
+  to {
+    background: var(--accent);
+    box-shadow: 0 0 12px var(--glow-a);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
 }

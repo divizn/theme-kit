@@ -1,15 +1,33 @@
 {
   "name": "@ph0n/theme-kit",
-  "version": "0.2.0",
-  "description": "Shared design tokens and Tailwind preset for divizn's static sites",
+  "version": "0.3.0",
+  "description": "Shared design tokens, styles and Solid UI components for divizn's static sites",
   "type": "module",
   "main": "./theme.css",
   "exports": {
-    ".": "./theme.css"
+    ".": "./theme.css",
+    "./ui": {
+      "types": "./dist/index.d.ts",
+      "solid": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
   },
   "files": [
-    "theme.css"
+    "theme.css",
+    "dist"
   ],
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "pnpm run build"
+  },
+  "peerDependencies": {
+    "solid-js": "^1.9.0"
+  },
+  "peerDependenciesMeta": {
+    "solid-js": {
+      "optional": true
+    }
+  },
   "publishConfig": {
     "access": "public"
   },
@@ -20,5 +38,14 @@
     "theme"
   ],
   "author": "Hassan Javed",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.7.0"
+  },
+  "devDependencies": {
+    "solid-js": "^1.9.17",
+    "typescript": "^5.9.3"
+  }
 }
