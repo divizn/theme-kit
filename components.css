@@ -623,3 +623,94 @@
   background: var(--muted);
   border-radius: var(--radius);
 }
+
+.palette {
+  width: min(36rem, 100vw - 2rem);
+  max-height: min(32rem, 100vh - 6rem);
+  margin: 12vh auto auto;
+  padding: 0;
+  color: var(--foreground);
+  background: var(--card);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-raised);
+}
+
+.palette[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+.palette::backdrop {
+  background: color-mix(in srgb, var(--background) 60%, transparent);
+}
+
+.palette input {
+  padding: 0.9rem 1rem;
+  font: 1rem/1.4 var(--font-ui);
+  color: inherit;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  outline: none;
+}
+
+.palette-list,
+.slash-menu {
+  margin: 0;
+  padding: 0.3rem;
+  list-style: none;
+  overflow-y: auto;
+}
+
+.palette-list li,
+.slash-menu li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.45rem 0.7rem;
+  font: 0.9rem/1.35 var(--font-ui);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.palette-list li > :last-child:not(:first-child) {
+  flex: none;
+  max-width: 40%;
+  text-align: right;
+  color: var(--muted-foreground);
+  font-size: 0.8rem;
+}
+
+.palette-list [aria-selected="true"],
+.slash-menu [aria-selected="true"] {
+  color: var(--accent);
+  background: var(--muted);
+}
+
+.palette-foot {
+  margin: 0;
+  padding: 0.5rem 1rem;
+  font: 0.75rem/1.4 var(--font-ui);
+  color: var(--muted-foreground);
+  border-top: 1px solid var(--border);
+}
+
+.slash-menu {
+  width: 12rem;
+  background: var(--card);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-raised);
+}
+
+.kbd {
+  display: inline-block;
+  min-width: 1.4em;
+  padding: 0 0.3em;
+  font: 600 0.75em/1.5 var(--font-ui);
+  text-align: center;
+  border: 1px solid var(--border-strong);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+}
