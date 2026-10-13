@@ -1,11 +1,13 @@
 {
   "name": "@ph0n/theme-kit",
-  "version": "0.4.0",
-  "description": "Shared design tokens, styles and Solid UI components for divizn's static sites",
+  "version": "0.5.0",
+  "description": "Shared themes, styles and Solid UI components for divizn's sites",
   "type": "module",
-  "main": "./theme.css",
   "exports": {
-    ".": "./theme.css",
+    "./themes/*": "./themes/*",
+    "./base.css": "./base.css",
+    "./components.css": "./components.css",
+    "./tailwind.css": "./tailwind.css",
     "./ui": {
       "types": "./dist/index.d.ts",
       "solid": "./dist/index.js",
@@ -13,7 +15,10 @@
     }
   },
   "files": [
-    "theme.css",
+    "themes",
+    "base.css",
+    "components.css",
+    "tailwind.css",
     "dist"
   ],
   "scripts": {

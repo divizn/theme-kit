@@ -1,0 +1,129 @@
+@source "./dist";
+
+@theme inline {
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-card: var(--card);
+  --color-muted: var(--muted);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-warning: var(--warning);
+  --color-ring: var(--accent);
+
+  --animate-fade-in: fade-in 1s ease-out both;
+  --animate-glow: glow 3s ease-in-out infinite;
+  --animate-title: title 1s ease-out both;
+  --animate-text-glow: text-glow 3s ease-in-out infinite;
+  --animate-title-glow: title 1s ease-out both, text-glow 3s ease-in-out infinite;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes glow {
+    0%,
+    100% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes title {
+    from {
+      opacity: 0;
+      filter: blur(6px);
+      transform: scale(0.98);
+    }
+    to {
+      opacity: 1;
+      filter: blur(0);
+      transform: scale(1);
+    }
+  }
+
+  @keyframes text-glow {
+    0%,
+    100% {
+      text-shadow:
+        0 0 20px var(--glow-a),
+        0 0 50px var(--glow-b);
+    }
+    50% {
+      text-shadow:
+        0 0 30px var(--glow-a-strong),
+        0 0 80px var(--glow-b-strong);
+    }
+  }
+}
+
+@theme {
+  --ease-spring: cubic-bezier(0.3, 1.6, 0.5, 1);
+  --animate-ink: ink 1s 0.5s ease-out both;
+  --animate-underline: underline 0.8s 1.2s cubic-bezier(0.5, 0, 0.2, 1) forwards;
+  --animate-intro: rise 0.7s 1.5s ease-out both;
+  --animate-rise: rise 0.5s ease-out both;
+  --animate-draw-rows: draw-rows 1.4s cubic-bezier(0.6, 0, 0.2, 1) both;
+  --animate-draw-cols: draw-cols 1.4s 0.15s cubic-bezier(0.6, 0, 0.2, 1) both;
+
+  @keyframes ink {
+    from {
+      opacity: 0;
+      translate: 0 0.25em;
+      text-shadow: 0 0 0 transparent;
+    }
+    60% {
+      opacity: 1;
+      translate: 0;
+      text-shadow:
+        0 0 40px var(--glow-a),
+        0 0 90px var(--glow-a);
+    }
+  }
+
+  @keyframes underline {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      translate: 0 0.5rem;
+    }
+  }
+
+  @keyframes draw-rows {
+    from {
+      clip-path: inset(0 100% 0 0);
+    }
+    to {
+      clip-path: inset(0);
+    }
+  }
+
+  @keyframes draw-cols {
+    from {
+      clip-path: inset(0 0 100% 0);
+    }
+    to {
+      clip-path: inset(0);
+    }
+  }
+}

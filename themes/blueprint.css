@@ -1,0 +1,68 @@
+:root {
+  --background: #f1f5fb;
+  --foreground: #13284d;
+  --muted-foreground: #556a8a;
+  --border: #bccde4;
+  --border-strong: #8fa7c9;
+  --card: #f9fbfe;
+  --muted: #e6edf7;
+  --primary: #13284d;
+  --primary-foreground: #f9fbfe;
+  --accent: #2160c4;
+  --warning: #a8520a;
+
+  --grid: #dbe5f2;
+  --grid-major: #c2d3e9;
+  --grid-lit: color-mix(in srgb, var(--accent) 40%, transparent);
+
+  --font-body: "STIX Two Text", "STIX Two", Cambria, Georgia, serif;
+  --font-display: var(--font-body);
+  --font-ui: "Atkinson Hyperlegible", system-ui, sans-serif;
+  --radius: 0;
+  --border-width: 2px;
+  --shadow-raised: 5px 5px 0 var(--accent);
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --background: #0f1f38;
+    --foreground: #e5edf8;
+    --muted-foreground: #9db0ca;
+    --border: #2b4468;
+    --border-strong: #46648f;
+    --card: #152a4b;
+    --muted: #1b3358;
+    --primary: #e5edf8;
+    --primary-foreground: #152a4b;
+    --accent: #6cb2ff;
+    --warning: #f2a65a;
+    --grid: rgba(150, 190, 245, 0.06);
+    --grid-major: rgba(150, 190, 245, 0.12);
+    color-scheme: dark;
+  }
+}
+
+[data-theme="dark"] {
+  --background: #0f1f38;
+  --foreground: #e5edf8;
+  --muted-foreground: #9db0ca;
+  --border: #2b4468;
+  --border-strong: #46648f;
+  --card: #152a4b;
+  --muted: #1b3358;
+  --primary: #e5edf8;
+  --primary-foreground: #152a4b;
+  --accent: #6cb2ff;
+  --warning: #f2a65a;
+  --grid: rgba(150, 190, 245, 0.06);
+  --grid-major: rgba(150, 190, 245, 0.12);
+  color-scheme: dark;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
