@@ -1,0 +1,264 @@
+.graph-paper {
+  mask-image: radial-gradient(
+    ellipse 70% 90% at 30% 0,
+    #000 30%,
+    transparent 75%
+  );
+}
+
+.graph-rows {
+  background-image:
+    linear-gradient(var(--grid-major) 1px, transparent 1px),
+    linear-gradient(var(--grid) 1px, transparent 1px);
+  background-size:
+    120px 120px,
+    24px 24px;
+}
+
+.graph-cols {
+  background-image:
+    linear-gradient(90deg, var(--grid-major) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size:
+    120px 120px,
+    24px 24px;
+}
+
+.graph-torch {
+  background-image:
+    linear-gradient(var(--grid-lit) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-lit) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: radial-gradient(
+    circle 160px at var(--mx, -999px) var(--my, -999px),
+    #000,
+    transparent
+  );
+  transition: opacity 0.3s;
+}
+
+.graph-card {
+  transition:
+    border-color 0.15s,
+    box-shadow 0.25s var(--ease-spring),
+    translate 0.25s var(--ease-spring);
+}
+
+.graph-card > * {
+  position: relative;
+}
+
+.graph-card::before,
+.graph-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.graph-card::before {
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.graph-card::after {
+  background-image:
+    linear-gradient(var(--grid-lit) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-lit) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: radial-gradient(
+    circle 140px at var(--tx, 50%) var(--ty, 50%),
+    #000,
+    transparent
+  );
+}
+
+@media (hover: hover) {
+  .graph-card:hover::before,
+  .graph-card:hover::after {
+    opacity: 1;
+  }
+}
+
+.graph-card:focus-visible::before,
+.graph-card:focus-visible::after {
+  opacity: 1;
+}
+
+.graph-card-arrow {
+  transition:
+    color 0.15s,
+    translate 0.25s var(--ease-spring);
+}
+
+@supports (animation-timeline: view()) {
+  .timeline-entry::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(-1.5rem - 1px);
+    width: 1px;
+    background: var(--accent);
+    transform-origin: top;
+    animation-name: timeline-fill;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+    animation-timeline: view();
+    animation-range: entry 20% cover 55%;
+  }
+
+  .timeline-marker {
+    z-index: 1;
+    animation-name: timeline-marker;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+    animation-timeline: view();
+    animation-range: entry 40% entry 100%;
+  }
+}
+
+@keyframes timeline-fill {
+  from {
+    scale: 1 0;
+  }
+}
+
+@keyframes timeline-marker {
+  to {
+    background: var(--accent);
+    box-shadow: 0 0 12px var(--glow-a, transparent);
+  }
+}
+
+.graph-grid {
+  background-image:
+    linear-gradient(var(--grid-major) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-major) 1px, transparent 1px),
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size:
+    120px 120px,
+    120px 120px,
+    24px 24px,
+    24px 24px;
+}
+
+.section-head {
+  display: flex;
+  align-items: flex-end;
+  gap: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: var(--border-width) solid var(--foreground);
+}
+
+.section-numeral {
+  font-size: clamp(4rem, 9vw, 6.5rem);
+  line-height: 0.8;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--accent);
+  font-variant-numeric: lining-nums;
+  min-width: 1.1ch;
+}
+
+.checkpoint {
+  margin-top: 2.5rem;
+  padding: 1.1rem 1.4rem 1.2rem;
+  background: var(--card);
+  border: var(--border-width) solid var(--foreground);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-raised);
+}
+
+.checkpoint h3 {
+  font-family: var(--font-ui);
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 0 0 0.35rem;
+  color: var(--accent);
+}
+
+.checkpoint p {
+  margin: 0;
+}
+
+.checkpoint p::first-letter {
+  text-transform: uppercase;
+}
+
+.track {
+  --node: 22px;
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  line-height: 1.3;
+}
+
+.track ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.track li {
+  position: relative;
+  padding-bottom: 1.6rem;
+}
+
+.track li:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  left: calc(var(--node) / 2 - 1px);
+  top: var(--node);
+  bottom: 0;
+  width: 2px;
+  background: var(--foreground);
+}
+
+.track-stop {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  text-decoration: none;
+}
+
+.track-node {
+  flex: none;
+  width: var(--node);
+  height: var(--node);
+  border-radius: 50%;
+  background: conic-gradient(var(--accent) calc(var(--p) * 1turn), var(--border) 0);
+  mask: radial-gradient(farthest-side, transparent calc(100% - 5px), #000 calc(100% - 4px));
+  transition: background 0.3s;
+}
+
+.track-stop.complete .track-node {
+  mask: none;
+  background: var(--accent);
+}
+
+.track-text {
+  display: flex;
+  flex-direction: column;
+  padding-top: 0.1rem;
+}
+
+.track-name {
+  font-weight: 700;
+}
+
+.track-key {
+  color: var(--accent);
+}
+
+.track-meta {
+  color: var(--muted-foreground);
+}
+
+.track-stop:hover .track-name {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}

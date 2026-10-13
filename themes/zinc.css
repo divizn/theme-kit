@@ -1,0 +1,76 @@
+@font-face {
+  font-family: "CalSans";
+  src: url("/fonts/CalSans-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --background: #000000;
+  --foreground: #f4f4f5;
+  --muted-foreground: #d4d4d8;
+  --border: #27272a;
+  --border-strong: #3f3f46;
+  --card: #18181b;
+  --muted: #27272a;
+  --primary: #f4f4f5;
+  --primary-foreground: #18181b;
+
+  /* the light value lifted to oklch lightness 0.7, since #0400d9 is 2:1 on black */
+  --accent: #438aff;
+  --warning: #f59e0b;
+
+  /* space-separated so JS can build rgba(var(--particle-rgb), alpha) */
+  --particle-rgb: 67 138 255;
+
+  --glow-a: rgba(67, 138, 255, 0.35);
+  --glow-b: rgba(67, 138, 255, 0.15);
+  --glow-a-strong: rgba(67, 138, 255, 0.6);
+  --glow-b-strong: rgba(67, 138, 255, 0.3);
+
+  --grid: rgba(67, 138, 255, 0.07);
+  --grid-major: rgba(67, 138, 255, 0.14);
+  --grid-lit: rgba(67, 138, 255, 0.4);
+
+  --font-body: "Inter Variable", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "CalSans", "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-ui: var(--font-body);
+  --radius: 12px;
+  --border-width: 1px;
+  --shadow-raised: 5px 5px 0 var(--accent);
+}
+
+[data-theme="light"] {
+  --background: #ffffff;
+  --foreground: #18181b;
+  --muted-foreground: #52525b;
+  --border: #e4e4e7;
+  --border-strong: #d4d4d8;
+  --card: #fafafa;
+  --muted: #f4f4f5;
+  --primary: #18181b;
+  --primary-foreground: #fafafa;
+
+  --accent: #0400d9;
+  --warning: #b45309;
+
+  --particle-rgb: 4 0 217;
+
+  --glow-a: rgba(4, 0, 217, 0.25);
+  --glow-b: rgba(4, 0, 217, 0.1);
+  --glow-a-strong: rgba(4, 0, 217, 0.45);
+  --glow-b-strong: rgba(4, 0, 217, 0.2);
+
+  --grid: rgba(4, 0, 217, 0.05);
+  --grid-major: rgba(4, 0, 217, 0.1);
+  --grid-lit: rgba(4, 0, 217, 0.28);
+}
+
+*,
+*::before,
+*::after {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: ease;
+  transition-duration: 200ms;
+}

@@ -1,18 +1,25 @@
 # @ph0n/theme-kit
 
-Shared design tokens, styles and Solid UI components for [divizn's](https://github.com/divizn) static sites.
+Shared themes, styles and Solid UI components for [divizn's](https://github.com/divizn) sites.
 
 ## What's included
 
-- CSS custom properties for a black/zinc dark-by-default color palette
-- A blue accent (`--accent`) with a per-theme value, since one hex cannot clear contrast on both grounds
-- Light theme override (`[data-theme="light"]`)
-- Inter Variable + CalSans font setup
-- Tailwind v4 theme configuration
-- Keyframe animations (fade-in, glow, title, text-glow, ink, underline, rise, grid draw-in) and a spring easing
-- Graph paper styles: grid tokens (`--grid`, `--grid-major`, `--grid-lit`), the `.graph-*` hero and card classes, and scroll-driven timeline styles
-- Reduced-motion handling for all of the above
-- Solid UI components from `@ph0n/theme-kit/ui`: `BentoGrid` + `BentoGridItem` (the graph paper link cards, with a cursor-following grid torch), `Badge`, `Button`, `Card` (+ `CardHeader`, `CardTitle`, `CardDescription`, `CardContent`), `Separator` and the `cn()` class helper
+- **Themes**, one file each, setting the same tokens so components look native in any of them:
+  - `themes/zinc.css`: black/zinc, Inter + Cal Sans, blue accent, rounded 1px cards. Dark by default, `data-theme="light"` for light.
+  - `themes/blueprint.css`: navy ink on graph paper, STIX Two Text + Atkinson Hyperlegible, square 2px rules, pen shadows. Follows `prefers-color-scheme`; `data-theme` forces either mode.
+- `base.css`: box sizing, body colours and font from the theme, reduced-motion handling.
+- `components.css`: plain CSS classes built only on tokens, usable with or without Tailwind:
+  - graph paper: `.graph-paper`, `.graph-rows`, `.graph-cols`, `.graph-grid`, `.graph-torch`, `.graph-card` (+ `-arrow`)
+  - timeline: `.timeline-entry`, `.timeline-marker` (scroll-driven)
+  - `.section-head` + `.section-numeral`, `.checkpoint`, `.track` (+ `-stop`, `-node`, `-text`, `-name`, `-key`, `-meta`)
+- `tailwind.css`: maps the tokens to Tailwind v4 utilities (`bg-background`, `text-accent`, `font-display`, ...) plus keyframe animations (fade-in, glow, title, text-glow, ink, underline, rise, grid draw-in) and a spring easing.
+- Solid UI components from `@ph0n/theme-kit/ui`: `BentoGrid` + `BentoGridItem`, `Badge`, `Button`, `Card` (+ `CardHeader`, `CardTitle`, `CardDescription`, `CardContent`), `Separator` and `cn()`.
+
+## Tokens
+
+Every theme defines: `--background`, `--foreground`, `--muted-foreground`, `--muted`, `--card`, `--border`, `--border-strong`, `--primary`, `--primary-foreground`, `--accent`, `--warning`, `--grid`, `--grid-major`, `--grid-lit`, `--font-body`, `--font-display`, `--font-ui`, `--radius`, `--border-width`, `--shadow-raised`.
+
+Themes may add extras of their own (zinc: `--glow-*`, `--particle-rgb`). Components only read the shared set.
 
 ## Installation
 
@@ -22,23 +29,26 @@ pnpm add @ph0n/theme-kit
 
 ## Usage
 
-Import in your main stylesheet (before any Tailwind directives):
+With Tailwind:
 
 ```css
 @import "tailwindcss";
-@import "@ph0n/theme-kit";
+@import "@ph0n/theme-kit/themes/zinc.css";
+@import "@ph0n/theme-kit/base.css";
+@import "@ph0n/theme-kit/components.css";
+@import "@ph0n/theme-kit/tailwind.css";
 @import "@fontsource-variable/inter";
-
-/* Your site's own extra tokens go here */
 ```
 
-Then add the CalSans font file to your project (still your responsibility):
+Without Tailwind:
 
-```
-public/fonts/CalSans-SemiBold.ttf
+```css
+@import "@ph0n/theme-kit/themes/blueprint.css";
+@import "@ph0n/theme-kit/base.css";
+@import "@ph0n/theme-kit/components.css";
 ```
 
-The package provides the CSS; you provide the binary.
+Fonts are the site's responsibility. Zinc expects Inter (fontsource) and `public/fonts/CalSans-SemiBold.ttf`; blueprint expects STIX Two Text and Atkinson Hyperlegible.
 
 ### Components
 
@@ -46,18 +56,13 @@ The package provides the CSS; you provide the binary.
 import { Badge, Card, CardTitle, cn } from "@ph0n/theme-kit/ui";
 ```
 
-The components ship as untransformed Solid JSX under the `solid` export condition, so the
-site's Solid integration compiles them. `solid-js` is a peer dependency. `theme.css`
-registers the components with Tailwind (`@source "./dist"`), so their classes are generated
-without any extra config in the site.
+The components ship as untransformed Solid JSX under the `solid` export condition, so the site's Solid integration compiles them. `solid-js` is an optional peer dependency. `tailwind.css` registers them with Tailwind (`@source "./dist"`).
 
 ## Customizing per-site
 
-If your site needs extra tokens (e.g., game-specific colors), add them *after* the import:
+Add site-specific tokens after the imports:
 
 ```css
-@import "@ph0n/theme-kit";
-
 :root {
   --hit: #f87171;
   --miss: #52525b;
@@ -71,17 +76,17 @@ If your site needs extra tokens (e.g., game-specific colors), add them *after* t
 }
 ```
 
-Tailwind v4 merges `@theme` blocks, so this just adds to the preset without conflicts.
+## Adding a theme
 
-## Updating colors
+Copy an existing file in `themes/`, keep every shared token, and choose its light/dark mechanism. Components need no change.
 
-Edit `theme.css` or `src/` in this package, bump the version (`npm version patch`), publish (`prepublishOnly` runs the build), then update consuming sites:
+## Releasing
+
+Bump the version, publish (`prepublishOnly` runs the build), then update consuming sites:
 
 ```bash
 pnpm update @ph0n/theme-kit
 ```
-
-This centralizes theme changes — no more hand-copying CSS across repos.
 
 ## License
 
