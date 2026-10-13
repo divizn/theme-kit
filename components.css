@@ -676,6 +676,8 @@
 
 .palette-list li > :last-child:not(:first-child) {
   flex: none;
+  max-width: 40%;
+  text-align: right;
   color: var(--muted-foreground);
   font-size: 0.8rem;
 }
