@@ -484,7 +484,7 @@
   cursor: grab;
 }
 
-.board-card[aria-grabbed="true"] {
+.board-card[data-dragging] {
   opacity: 0.4;
 }
 
