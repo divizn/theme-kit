@@ -12,7 +12,7 @@ Shared design tokens, styles and Solid UI components for [divizn's](https://gith
 - Keyframe animations (fade-in, glow, title, text-glow, ink, underline, rise, grid draw-in) and a spring easing
 - Graph paper styles: grid tokens (`--grid`, `--grid-major`, `--grid-lit`), the `.graph-*` hero and card classes, and scroll-driven timeline styles
 - Reduced-motion handling for all of the above
-- Solid UI components from `@ph0n/theme-kit/ui`: `Badge`, `Button`, `Card` (+ `CardHeader`, `CardTitle`, `CardDescription`, `CardContent`), `Separator` and the `cn()` class helper
+- Solid UI components from `@ph0n/theme-kit/ui`: `BentoGrid` + `BentoGridItem` (the graph paper link cards, with a cursor-following grid torch), `Badge`, `Button`, `Card` (+ `CardHeader`, `CardTitle`, `CardDescription`, `CardContent`), `Separator` and the `cn()` class helper
 
 ## Installation
 
