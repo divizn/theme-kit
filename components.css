@@ -716,6 +716,13 @@
   background: var(--muted);
 }
 
+.palette-empty {
+  margin: 0;
+  padding: 0 1rem;
+  font: 0.9rem/2.4 var(--font-ui);
+  color: var(--muted-foreground);
+}
+
 .palette-foot {
   margin: 0;
   padding: 0.5rem 1rem;
