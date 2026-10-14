@@ -554,6 +554,16 @@
   color: var(--accent);
 }
 
+@media (hover: hover) {
+  .peek-link[data-empty]:not(:focus-visible, [aria-current="true"]) {
+    opacity: 0;
+  }
+
+  [data-item]:is(:hover, :focus, :focus-within) .peek-link[data-empty] {
+    opacity: 1;
+  }
+}
+
 .subtask-list {
   list-style: none;
   margin: 0;

@@ -14,7 +14,7 @@ Shared themes, styles and Solid UI components for [divizn's](https://github.com/
   - `.section-head` + `.section-numeral`, `.checkpoint`, `.track` (+ `-stop`, `-node`, `-text`, `-name`, `-key`, `-meta`)
   - progress: `.status-pill` (`data-status`), `.status-menu` (popover), `.progress-bar` (`--p`, optional `--mark` tick), `.week-chip` (`data-state`), `.overdue-banner`
   - tracker views: `.view-tabs`, `.data-table`, `.board` (+ `-column` with `data-over`, `-card` with `data-dragging`), `.week-strip` + `.week-cell` (`data-state`, `aria-current="date"`)
-  - side peek: `.peek` (fixed right panel), `.peek-link`, `.subtask-list`, `.notes` (rendered markdown)
+  - side peek: `.peek` (fixed right panel), `.peek-link` (`data-empty` hides it until its `[data-item]` row is hovered or focused), `.subtask-list`, `.notes` (rendered markdown)
   - command palette: `.palette` (native `<dialog>`), `.palette-list` (`aria-selected`), `.palette-foot`, `.slash-menu`, `.kbd`
 - `tailwind.css`: maps the tokens to Tailwind v4 utilities (`bg-background`, `text-accent`, `font-display`, ...) plus keyframe animations (fade-in, glow, title, text-glow, ink, underline, rise, grid draw-in) and a spring easing.
 - Solid UI components from `@ph0n/theme-kit/ui`: `BentoGrid` + `BentoGridItem`, `Badge`, `Button`, `Card` (+ `CardHeader`, `CardTitle`, `CardDescription`, `CardContent`), `Separator` and `cn()`.
