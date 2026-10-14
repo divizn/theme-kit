@@ -418,7 +418,7 @@
   color: var(--foreground);
 }
 
-.view-tabs a[aria-current="page"] {
+.view-tabs a[aria-current] {
   color: var(--foreground);
   border-bottom-color: var(--accent);
 }
@@ -452,6 +452,12 @@
   overflow-x: auto;
 }
 
+@media (max-width: 40rem) {
+  .board {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 .board-column {
   display: flex;
   flex-direction: column;
@@ -467,7 +473,7 @@
   border-color: var(--accent);
 }
 
-.board-column h3 {
+.board-column :is(h2, h3) {
   margin: 0 0 0.25rem;
   font: 700 0.85rem/1.3 var(--font-ui);
   color: var(--muted-foreground);
@@ -522,6 +528,7 @@
 .week-cell[data-state="overdue"] {
   color: var(--warning);
   border-color: var(--warning);
+  border-style: dashed;
 }
 
 .week-cell[aria-current="date"] {
@@ -543,10 +550,15 @@
 }
 
 .peek-link {
+  display: inline-block;
+  min-height: 24px;
+  padding-block: 0.25rem;
   font-family: var(--font-ui);
   font-size: 0.8rem;
+  line-height: 1.3;
   color: var(--muted-foreground);
-  text-decoration: none;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
 }
 
 .peek-link:hover,
@@ -596,7 +608,9 @@
 }
 
 .subtask-list button {
-  padding: 0;
+  min-width: 24px;
+  min-height: 24px;
+  padding: 0.25rem 0.4rem;
   font: 0.8rem/1.3 var(--font-ui);
   color: var(--muted-foreground);
   background: none;
@@ -665,6 +679,10 @@
   outline: none;
 }
 
+.palette input:focus-visible {
+  box-shadow: inset 0 -2px 0 var(--accent);
+}
+
 .palette-list,
 .slash-menu {
   margin: 0;
@@ -698,6 +716,13 @@
   background: var(--muted);
 }
 
+.palette-empty {
+  margin: 0;
+  padding: 0 1rem;
+  font: 0.9rem/2.4 var(--font-ui);
+  color: var(--muted-foreground);
+}
+
 .palette-foot {
   margin: 0;
   padding: 0.5rem 1rem;
@@ -723,4 +748,20 @@
   border: 1px solid var(--border-strong);
   border-bottom-width: 2px;
   border-radius: 4px;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 100;
+  padding: 0.5rem 0.9rem;
+  font: 600 0.9rem/1.3 var(--font-ui);
+  color: var(--primary-foreground);
+  background: var(--accent);
+  translate: 0 -200%;
+}
+
+.skip-link:focus {
+  translate: 0;
 }
