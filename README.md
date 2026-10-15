@@ -12,7 +12,7 @@ Shared themes, styles and Solid UI components for [divizn's](https://github.com/
   - graph paper: `.graph-paper`, `.graph-rows`, `.graph-cols`, `.graph-grid`, `.graph-torch`, `.graph-card` (+ `-arrow`)
   - timeline: `.timeline-entry`, `.timeline-marker` (scroll-driven)
   - `.section-head` + `.section-numeral`, `.checkpoint`, `.track` (+ `-stop`, `-node`, `-text`, `-name`, `-key`, `-meta`)
-  - progress: `.status-pill` (`data-status`), `.status-menu` (popover), `.progress-bar` (`--p`, optional `--mark` tick), `.week-chip` (`data-state`), `.overdue-banner`
+  - progress: `.status-pill` (`data-status`), `.status-menu` (popover, `aria-checked` option), `.progress-bar` (`--p`, optional `--mark` tick), `.week-chip` (`data-state`), `.overdue-banner`
   - tracker views: `.view-tabs` (`aria-current`), `.data-table`, `.board` (+ `-column` with `data-over`, `-card` with `data-dragging`), `.week-strip` + `.week-cell` (`data-state`, `aria-current="date"`)
   - side peek: `.peek` (fixed right panel), `.peek-link` (`data-empty` hides it until its `[data-item]` row is hovered or focused), `.subtask-list`, `.notes` (rendered markdown)
   - command palette: `.palette` (native `<dialog>`), `.palette-list` (`aria-selected`), `.palette-empty` (live status), `.palette-foot`, `.slash-menu`, `.kbd`
