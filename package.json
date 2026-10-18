@@ -1,6 +1,6 @@
 {
   "name": "@ph0n/theme-kit",
-  "version": "0.17.0",
+  "version": "0.18.0",
   "description": "Shared themes, styles and Solid UI components for divizn's sites",
   "type": "module",
   "exports": {
