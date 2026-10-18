@@ -751,11 +751,13 @@
 
 .timetable tbody th {
   font: 700 0.78rem/1.3 var(--font-ui);
+  vertical-align: middle;
   background: var(--card);
   border: 1px solid var(--border);
+  box-shadow: inset 3px 0 0 var(--chip-color, var(--border));
 }
 
-.timetable tbody th a {
+.timetable th a {
   color: inherit;
   text-decoration: none;
 }
@@ -766,14 +768,14 @@
   color: var(--muted-foreground);
 }
 
-.timetable tr[data-state="current"] th {
+.timetable thead th[data-state="current"] {
   color: var(--accent);
-  box-shadow: inset 3px 0 0 var(--accent);
+  box-shadow: inset 0 -3px 0 var(--accent);
 }
 
-.timetable tr[data-state="overdue"] th {
+.timetable thead th[data-state="overdue"] {
   color: var(--warning);
-  box-shadow: inset 3px 0 0 var(--warning);
+  box-shadow: inset 0 -3px 0 var(--warning);
 }
 
 .month-grid {
