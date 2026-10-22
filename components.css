@@ -1442,3 +1442,36 @@ html .ec {
 .ec.ec-list .ec-session a {
   white-space: normal;
 }
+
+html .wx-willow-theme {
+  --wx-background: transparent;
+  --wx-background-alt: transparent;
+  --wx-background-hover: color-mix(in srgb, var(--accent) 6%, transparent);
+  --wx-color-font: var(--foreground);
+  --wx-color-font-alt: var(--muted-foreground);
+  --wx-font-family: var(--font-ui);
+  --wx-font-size: 0.8rem;
+  --wx-font-weight: 400;
+  --wx-border: var(--border-width) solid var(--border);
+  --wx-border-color: var(--border);
+  --wx-header-font-weight: 700;
+  --wx-table-header-background: transparent;
+  --wx-table-select-background: color-mix(in srgb, var(--accent) 8%, transparent);
+  --wx-gantt-border: 1px solid var(--border);
+  --wx-gantt-border-color: var(--border);
+  --wx-gantt-select-color: color-mix(in srgb, var(--accent) 8%, transparent);
+  --wx-gantt-bar-border-radius: var(--radius);
+  --wx-gantt-bar-shadow: none;
+  --wx-gantt-bar-font: 600 0.75rem var(--font-ui);
+  --wx-gantt-task-font-color: var(--foreground);
+  --wx-gantt-summary-color: color-mix(in srgb, var(--foreground) 14%, transparent);
+  --wx-gantt-summary-fill-color: var(--foreground);
+  --wx-gantt-summary-font-color: var(--foreground);
+  --wx-gantt-summary-border: 0;
+}
+
+.wx-willow-theme .wx-bar.wx-task {
+  --wx-gantt-task-color: color-mix(in srgb, var(--chip-color, var(--accent)) 14%, var(--card));
+  --wx-gantt-task-fill-color: color-mix(in srgb, var(--chip-color, var(--accent)) 45%, var(--card));
+  --wx-gantt-task-border: var(--border-width) solid var(--chip-color, var(--accent));
+}
