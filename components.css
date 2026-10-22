@@ -408,6 +408,8 @@
 }
 
 .view-tabs a {
+  flex: none;
+  white-space: nowrap;
   margin-bottom: calc(var(--border-width) * -1);
   padding: 0.4rem 0;
   color: var(--muted-foreground);
