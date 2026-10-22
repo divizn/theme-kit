@@ -1036,6 +1036,17 @@
   border-radius: var(--radius);
 }
 
+.gantt-bar + .gantt-bar {
+  margin-left: 2px;
+}
+
+.gantt-label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .gantt-bar:hover {
   box-shadow: var(--shadow-raised, none);
 }
